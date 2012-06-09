@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "easy_key_value"
   gem.require_paths = ["lib"]
-  gem.version       = '0.0.0'
+  gem.version       = EasyKeyValue::VERSION
 
   gem.add_dependency 'activerecord', '>= 3.1.0'
 
