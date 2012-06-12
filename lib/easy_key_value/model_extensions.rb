@@ -1,6 +1,6 @@
 require "easy_key_value/key_value_store"
 
-module EasyKeyValue
+module EKV
   module ModelExtensions
 
     def self.included(base)
