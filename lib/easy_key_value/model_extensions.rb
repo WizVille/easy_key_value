@@ -1,3 +1,5 @@
+require "easy_key_value/key_value_store"
+
 module EasyKeyValue
   module ModelExtensions
 
@@ -8,8 +10,9 @@ module EasyKeyValue
 
   module ClassMethods
 
+    # Marks the model as a key / value store
     def acts_as_key_value_store
-      puts "Acting as a key / value store"
+      include ModelExtensions::KeyValueStore
     end
 
   end
