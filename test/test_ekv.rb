@@ -31,6 +31,13 @@ class EayKeyValueTest < Test::Unit::TestCase
 
     assert_equal true, foo.kv_store.frozen?
 
+    assert_equal true, foo.update_key('toto', 'tutu')
+    assert_equal false, foo.update_key('totu', 'tutu')
+
+    assert_equal 'tutu', foo.get_key('toto')
+    foo = Foo.last
+    assert_equal 'tutu', foo.get_key('toto')
+
   end
 
 end

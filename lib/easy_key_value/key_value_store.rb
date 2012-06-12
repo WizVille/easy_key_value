@@ -38,12 +38,27 @@ module EKV
         true
       end
 
+      # Updates a given key with the given value
+      #
+      # @param [String] key The key we want to change
+      # @param [String] value The new value for this key
+      # @return [Boolean] true if the key was updated, false if the key did not exist
+      def update_key(key, value)
+        return false unless @ekv.key? key
+        ekv = EasyKeyValue.find_by_ekv_id_and_ekv_type_and_key(self.id, self.class.to_s, key)
+        return false if ekv.nil?
+        ekv.value = value
+        ekv.save
+        @ekv[key] = value
+        true
+      end
+
       # Gets a hash containing the key and values
       #
       # @return [Hash] The hash containing key and values for this object
       def kv_store
         self.load_ekv
-        @ekv.freeze
+        @ekv.clone.freeze
       end
 
 protected
