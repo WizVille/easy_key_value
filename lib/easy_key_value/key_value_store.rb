@@ -37,6 +37,14 @@ module EKV
         true
       end
 
+      # Gets a hash containing the key and values
+      #
+      # @return [Hash] The hash containing key and values for this object
+      def kv_store
+        self.load_ekv
+        @ekv.freeze
+      end
+
 protected
 
       # Loads The key and values for the current model
