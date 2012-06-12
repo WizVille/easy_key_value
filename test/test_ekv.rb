@@ -8,7 +8,7 @@ load 'schema.rb'
 class EayKeyValueTest < Test::Unit::TestCase
 
 
-  def test_get_set
+  def test_get_set_del
     foo = Foo.new
     foo.save
 
@@ -16,6 +16,11 @@ class EayKeyValueTest < Test::Unit::TestCase
     assert_equal false, foo.add_key('foo', 'bar')
 
     assert_equal 'bar', foo.get_key('foo')
+    assert_equal true, foo.del_key('foo')
+    assert_equal false, foo.del_key('foo')
+    assert_equal false, foo.del_key('bar')
+    assert_equal nil, foo.get_key('foo')
+
   end
 
 end

@@ -20,6 +20,17 @@ module EKV
         ekv.value
       end
 
+      # Removes a given key
+      #
+      # @param [String] key The key we want to destroy
+      # @return [Boolean] Wether or not the key was destroyed
+      def del_key(key)
+        ekv = EasyKeyValue.find_by_ekv_id_and_ekv_type_and_key(self.id, self.class.to_s, key)
+        return false if ekv.nil?
+        ekv.destroy
+        true
+      end
+
     end
   end
 end
