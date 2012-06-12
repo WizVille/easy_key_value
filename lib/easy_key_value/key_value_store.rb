@@ -41,7 +41,7 @@ protected
 
       # Loads The key and values for the current model
       def load_ekv
-        return if defined? @ekv or !@ekv.nil?
+        return if defined? @ekv and !@ekv.nil?
 
         keys = EasyKeyValue.find_all_by_ekv_id_and_ekv_type(self.id, self.class.to_s)
         @ekv = {}
