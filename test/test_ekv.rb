@@ -40,5 +40,25 @@ class EayKeyValueTest < Test::Unit::TestCase
 
   end
 
+  def test_key
+    foo = Foo.new
+    foo.save
+
+    assert_equal nil, foo.key('foo')
+
+    assert_equal true, foo.key('foo', 'bar')
+    assert_equal 'bar', foo.key('foo')
+
+    foo = Foo.last
+
+    assert_equal 'bar', foo.key('foo')
+    assert_equal true, foo.key('foo', 'baz')
+    assert_equal 'baz', foo.key('foo')
+
+    foo = Foo.last
+    assert_equal 'baz', foo.key('foo')
+
+  end
+
 end
 

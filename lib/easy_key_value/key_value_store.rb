@@ -2,6 +2,24 @@ module EKV
   module ModelExtensions
     module KeyValueStore
 
+      # Accesses a key, or sets / updates it depending on its existence
+      #
+      # @param [String] key The name of the key
+      # @param [String, nil] value The value to be set or nil if we just want to read the value
+      # @return [String, boolean] The value of the key if value is nil
+      def key(key, value = nil)
+        return self.get_key(key) if value.nil?
+
+        if @ekv.key? key
+          #Update
+          self.update_key(key, value)
+        else
+          # Add a key
+          self.add_key(key, value)
+        end
+
+      end
+
       # Adds a key with its value
       #
       # @param [String] key The key
