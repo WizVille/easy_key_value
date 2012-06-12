@@ -30,6 +30,7 @@ module EKV
       # @return [Boolean] Wether or not the key was destroyed
       def del_key(key)
         self.load_ekv
+        return false unless @ekv.key? key
         ekv = EasyKeyValue.find_by_ekv_id_and_ekv_type_and_key(self.id, self.class.to_s, key)
         return false if ekv.nil?
         ekv.destroy
