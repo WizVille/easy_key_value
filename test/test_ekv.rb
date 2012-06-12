@@ -21,6 +21,12 @@ class EayKeyValueTest < Test::Unit::TestCase
     assert_equal false, foo.del_key('bar')
     assert_equal nil, foo.get_key('foo')
 
+    foo.add_key('toto', 'tata')
+
+    foo = Foo.last
+
+    assert_equal 'tata', foo.get_key('toto')
+
   end
 
 end
