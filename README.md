@@ -16,6 +16,17 @@ Or install it yourself as:
 
     $ gem install easy_key_value
 
+
+Once installed, please run the following commands :
+
+```
+rails generate ekv:migrations
+```
+
+This will generate a new migration used by easy_key_value
+
+Don't forget to run ```rake db:migrate``` in order to apply the new migration.
+
 ## Usage
 
 Because an example is better than a precept :
