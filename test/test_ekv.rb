@@ -60,5 +60,16 @@ class EayKeyValueTest < Test::Unit::TestCase
 
   end
 
+  def test_default_values
+    foo = Foo.new
+    foo.save
+
+    assert_equal 'mia', foo.key('mama')
+
+    foo.key('mama', 'nomia')
+
+    assert_equal 'nomia', foo.key('mama')
+  end
+
 end
 

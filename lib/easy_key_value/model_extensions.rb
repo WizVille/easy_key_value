@@ -1,10 +1,11 @@
 require "easy_key_value/key_value_store"
+require "easy_key_value/class_methods"
 
 module EKV
   module ModelExtensions
 
     def self.included(base)
-      base.send(:extend, ClassMethods)
+      base.send(:extend, EKV::ClassMethods)
     end
   end
 

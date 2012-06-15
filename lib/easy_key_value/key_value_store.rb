@@ -2,6 +2,11 @@ module EKV
   module ModelExtensions
     module KeyValueStore
 
+      def self.included(base)
+        class_variable_set(:@@ekv_defaults, {})
+        base.send(:extend, ModelExtensions::ClassMethods)
+      end
+
       # Accesses a key, or sets / updates it depending on its existence
       #
       # @param [String] key The name of the key
@@ -39,7 +44,7 @@ module EKV
       # @return [String, nil] The value or nil if it does not exist
       def get_key(key)
         self.load_ekv
-        @ekv[key]
+        @ekv[key] || @@ekv_defaults[key]
       end
 
       # Removes a given key
