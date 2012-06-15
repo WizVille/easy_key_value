@@ -10,7 +10,7 @@ class EasyKeyValueMigration < ActiveRecord::Migration
     end
 
     add_index :easy_key_values, :ekv_id, :name => 'ekv_id_ix'
-    add_index :easy_key_values, :value, :name => 'value_ix'
+    add_index :easy_key_values, :key, :name => 'key_ix'
   end
 
 end
