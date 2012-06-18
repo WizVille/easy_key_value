@@ -13,6 +13,7 @@ module EKV
       # @param [String, nil] value The value to be set or nil if we just want to read the value
       # @return [String, boolean] The value of the key if value is nil
       def key(key, value = nil)
+        self.load_ekv
         return self.get_key(key) if value.nil?
 
         if @ekv.key? key
